@@ -14,6 +14,12 @@ class App extends Component {
       searchTitle: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    // console.log(event);
+    //setState method updates the state itself
+    this.setState({ searchTitle: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -37,10 +43,10 @@ class App extends Component {
       <React.Fragment>
         <Form
           searchTitle={this.state.searchTitle}
-          booksArray={this.state.booksArray}
           handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
         />
-        <BookContainer />
+        <BookContainer booksArray={this.state.booksArray} />
       </React.Fragment>
     );
   }

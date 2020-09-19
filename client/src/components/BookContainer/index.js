@@ -1,10 +1,12 @@
 import React from "react";
 import BookCard from "../BookCard";
 
-function BookContainer() {
+function BookContainer(props) {
   return (
     <div>
-      <BookCard />
+      {props.booksArray.map((el) => {
+        return <BookCard booksArray={props.booksArray} />;
+      })}
     </div>
   );
 }
