@@ -6,7 +6,7 @@ import "./style.css";
 function BookCard(props) {
   return (
     <div>
-      <div>props.Title</div>
+      <div>Title</div>
       <div>Author</div>
       <div>Description</div>
       <div>Link</div>

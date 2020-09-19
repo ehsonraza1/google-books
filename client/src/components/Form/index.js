@@ -4,8 +4,8 @@ import axios from "axios";
 // This file exports the Input, TextArea, and FormBtn components
 
 class Form extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     //copy lines 10-41 and pass functions as Props and pass specifics part of state as props - searchStyle to form
     //Passing state.BooksArray to bookcontainer - and map through the array of this.props and map it to BookCard component
     this.state = {
@@ -14,7 +14,6 @@ class Form extends React.Component {
       searchTitle: "",
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   //Update seatchTitle property of the this.state object using the function
@@ -24,23 +23,7 @@ class Form extends React.Component {
     //setState method updates the state itself
     this.setState({ searchTitle: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTitle}`
-      )
-      .then((response) => {
-        this.setState({ booksArray: response.data.items });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
